@@ -56,10 +56,8 @@ for (( i=0; i<${#resized_files[@]}; i++ )); do
 done
 
 # Use the last output from xfade as the output to the file
-final_output=$previous_output
 echo "Filter complex: $filter_complex"
 
-# # Run FFmpeg command
-ffmpeg $input_files -filter_complex "$filter_complex" -map "[$final_output]" output.mp4
+ffmpeg $input_files -filter_complex "$filter_complex" -map "[$previous_output]" output.mp4
 
 echo "Merging complete. Output file is output.mp4"
